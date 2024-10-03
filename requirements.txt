@@ -1,12 +1,11 @@
 tqdm
-umap
 umap-learn
-numpy
+numpy==2.0.2
 scikit-learn
 matplotlib
 joblib
-opencv-python
-bokeh
+opencv-python==4.10.0.84
+bokeh==3.4.3
 reportlab
 beautifulsoup4
 lxml
