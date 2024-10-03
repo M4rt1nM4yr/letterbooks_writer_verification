@@ -102,8 +102,9 @@ if __name__ == "__main__":
     ]
     books = books_all
 
-    root_imgs = "/cluster/mayr/nbb/vanilla/"
-    root_diplomatic = "/cluster/mayr/nbb/vanilla/nuremberg_letterbooks/diplomatic-regularised"
+    root_imgs = "add root path here"
+    root_diplomatic = "add root path to diplmatic labels here"
+    
     embeddings, embeddings_norm, labels, names, imgs, meta_dict = get_data(
         root_imgs=root_imgs,
         root_diplomatic=root_diplomatic,
