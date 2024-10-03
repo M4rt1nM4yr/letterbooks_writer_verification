@@ -1,9 +1,5 @@
 import numpy as np
 import cv2 as cv
-import torch
-from torchvision import transforms
-from skimage.filters import threshold_sauvola, threshold_niblack, threshold_otsu, rank
-from skimage.morphology import disk
 from sklearn.preprocessing import normalize
 from timeit import default_timer as time
 from PIL import Image, ImageOps
@@ -29,7 +25,6 @@ class Descriptor():
         self.sampler = sampler
         self.hellinger_norm = hellinger_norm
         self.rm_duplicates = rm_duplicates
-        self.toPIL = transforms.ToPILImage()
 
         if binarizer == "otsu":
             self.binarize = bin_otsu
@@ -55,9 +50,7 @@ class Descriptor():
             X = [X]
         all_features = list()
         for x in X:
-            if isinstance(x,torch.Tensor):
-                x = np.asarray(self.toPIL(x)).copy()
-            elif isinstance(x,Image.Image):
+            if isinstance(x,Image.Image):
                 x = np.asarray(x).copy()
             assert isinstance(x,np.ndarray)
             x_bin = self.binarize(x)

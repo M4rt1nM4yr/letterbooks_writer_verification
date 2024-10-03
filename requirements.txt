@@ -1,0 +1,11 @@
+tqdm
+umap
+umap-learn
+numpy
+scikit-learn
+matplotlib
+joblib
+opencv-python
+bokeh
+reportlab
+beautifulsoup4

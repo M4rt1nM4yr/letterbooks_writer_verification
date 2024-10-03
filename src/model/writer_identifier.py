@@ -14,9 +14,6 @@ from src.model.utils.descriptor import Descriptor
 from src.model.utils.dim_reduction import DimReduction
 from src.model.utils.vlad import VLAD
 
-from src.utils.pylogger import get_pylogger
-
-log = get_pylogger(__name__)
 
 def worker_fit(args):
     x, descriptor_function, max_per_item = args
@@ -72,15 +69,15 @@ class WriterIdentifier(object):
                     break
         del(X)
         features_fit = np.vstack(features)
-        log.debug("Descriptors used:", len(features_fit))
+        print("Descriptors used:", len(features_fit))
         print(f"local {time()-start_local}")
-        log.debug("reducing feature dim")
+        print("reducing feature dim")
         start_reduce1 = time()
         self.dim_reduction_features.fit(features_fit)
         features_reduced = [self.dim_reduction_features.transform(f) for f in features]
         print(f"reduce1 {time()-start_reduce1}")
         del(features)
-        log.debug("Computing vlad encoding")
+        print("Computing vlad encoding")
         start_vlad = time()
         self.vlad.fit(features_reduced)
         encodings = self.vlad.predict(features_reduced)
@@ -88,7 +85,7 @@ class WriterIdentifier(object):
         del(features_reduced)
         start_reduce2 = time()
         self.dim_reduction_encoding.fit(encodings)
-        log.debug("Reducing feature dim of encoding")
+        print("Reducing feature dim of encoding")
         encodings_reduced = self.dim_reduction_encoding.transform(encodings)
         print(f"reduce2 {time()-start_reduce2}")
         return encodings_reduced

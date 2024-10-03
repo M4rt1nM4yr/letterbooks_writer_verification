@@ -2,8 +2,6 @@ import os
 from tqdm import tqdm
 import numpy as np
 import cv2 as cv
-import pickle
-import torch
 from sklearn.linear_model import Ridge
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.preprocessing import normalize
