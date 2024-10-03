@@ -134,8 +134,8 @@ if __name__ == "__main__":
     run(
         root_imgs=root_imgs,
         root_diplomatic=root_diplomatic,
-        books_train=[book],
-        books_test=[book],
+        books_train=book,
+        books_test=book,
         just_load_data=False,
         produce_report_of_false_predictions=True,
     )
